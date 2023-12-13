@@ -93,6 +93,4 @@ class LinkedList:
 
 
 list = LinkedList()
-list.remove(3)
-print(list)
 
