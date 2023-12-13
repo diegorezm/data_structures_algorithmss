@@ -1,5 +1,6 @@
 from typing import Optional
 
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -91,6 +92,17 @@ class DoublyList:
             current = current.next
             i += 1
         return None
+    def reverse(self):
+        if self.tail is not None:
+            reverse = []
+            current = self.tail
+            while current:
+                reverse.append(current)
+                current = current.prev_node
+            return reverse
+        else:
+            raise TypeError("ERROR: Tail is none.")
+
 
     def __repr__(self):
         nodes = []
@@ -107,5 +119,6 @@ list.append(20)
 list.prepend(18)
 list.insert(3,90)
 list.remove(3)
+print(list.reverse())
 print(list)
 
