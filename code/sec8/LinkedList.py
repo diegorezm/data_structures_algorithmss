@@ -42,7 +42,9 @@ class LinkedList:
             if el == self.tail:
                 self.tail = leader
             self.size -= 1
-                
+        else:
+            raise TypeError("ERROR: head of linked list is of type None!")
+            
     def append(self, value):
         node = Node(value)
         if not self.head:
@@ -67,8 +69,10 @@ class LinkedList:
         self.size += 1
 
     def to_index(self,idx: int) -> Optional[Node]:
-        if idx < 0 or idx > self.size:
+        if idx < 0:
             raise ValueError(f"ERROR: index out of bound!")
+        if idx >= self.size:
+            return self.tail
         i = 0
         current = self.head
 
@@ -89,10 +93,6 @@ class LinkedList:
 
 
 list = LinkedList()
-list.append(8)
-list.append(5)
-list.append(1)
-list.insert(2,10)
-list.remove(0)
+list.remove(3)
 print(list)
 
