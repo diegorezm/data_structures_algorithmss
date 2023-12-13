@@ -40,7 +40,12 @@ class DoublyList:
             if leader is None or leader.next is None:
                 return
             el = leader.next
-            leader.next = el.next
+            if el.next is not None:
+                follower = el.next
+                leader.next = follower
+                follower.prev_node = leader
+            else:
+                leader.next = None
             if el == self.tail:
                 self.tail = leader
             self.size -= 1
@@ -100,6 +105,7 @@ list = DoublyList()
 list.append(10)
 list.append(20)
 list.prepend(18)
-list.insert(4,90)
+list.insert(3,90)
+list.remove(3)
 print(list)
 
