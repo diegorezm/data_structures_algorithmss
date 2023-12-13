@@ -1,4 +1,4 @@
-# FIX: there has to be a better way to declare arrays fixed sizes in python
+# FIX: there has to be a better way to declare arrays with fixed sizes in python
 class HashTable():
 
     def __init__(self, size: int) -> None:
