@@ -4,11 +4,12 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next: Optional[Node] = None
+        self.prev_node: Optional[Node] = None
 
     def __repr__(self):
         return str(self.value)
 
-class LinkedList:
+class DoublyList:
     def __init__(self):
         self.head: Optional[Node] = None
         self.tail: Optional[Node] = None
@@ -22,10 +23,12 @@ class LinkedList:
         node = Node(value)
         leader = self.to_index(idx - 1)
 
-        if leader is not None:
-            holder = leader.next
+        if leader is not None and leader.next is not None:
+            follower = leader.next
             leader.next = node
-            node.next = holder
+            node.prev_node = leader
+            node.next = follower
+            follower.prev_node = node
             self.size += 1
 
     def remove(self, idx: int):
@@ -51,6 +54,7 @@ class LinkedList:
             self.tail = node
         else:
             if self.tail:
+                node.prev_node = self.tail
                 self.tail.next = node
                 self.tail = node
             else:
@@ -64,6 +68,7 @@ class LinkedList:
             self.tail = node
         else:
             node.next = self.head
+            self.head.prev_node = node
             self.head = node
         self.size += 1
 
@@ -91,5 +96,10 @@ class LinkedList:
         return ' -> '.join(nodes) + " -> None"
 
 
-list = LinkedList()
+list = DoublyList()
+list.append(10)
+list.append(20)
+list.prepend(18)
+list.insert(4,90)
+print(list)
 
