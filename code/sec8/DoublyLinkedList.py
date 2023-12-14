@@ -92,6 +92,7 @@ class DoublyList:
             current = current.next
             i += 1
         return None
+
     def reverse(self):
         if self.tail is not None:
             reverse = []

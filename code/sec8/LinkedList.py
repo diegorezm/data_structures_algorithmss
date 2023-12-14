@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional, Union
 
 class Node:
     def __init__(self, value):
@@ -81,15 +81,30 @@ class LinkedList:
             current = current.next
             i += 1
         return None
-
-    def __repr__(self):
-        nodes = []
+    # 1 -> 2 -> 3
+    def reverse(self) -> List[int]:
         current = self.head
+        reversed_list = []
         while current:
-            nodes.append(str(current.value))
+            reversed_list.append(current.value)
             current = current.next
+        return reversed_list[::-1]
+
+    def __repr__(self, values: Union[List[int], None] = None):
+        nodes = []
+        if values is not None:
+            nodes.extend(str(val) for val in values)
+        else:
+            current = self.head
+            while current:
+                nodes.append(str(current.value))
+                current = current.next
         return ' -> '.join(nodes) + " -> None"
 
 
 list = LinkedList()
-
+list.append(10)
+list.insert(1,20)
+list.insert(2,18)
+reversed = list.reverse()
+print(list)
