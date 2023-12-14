@@ -1,8 +1,8 @@
-from typing import Optional
+from typing import Optional, Union
 
 
 class Node():
-    def __init__(self, value=0):
+    def __init__(self, value: Union[int, str]):
         self.value = value
         self.next: Optional[Node] = None
 
@@ -12,7 +12,7 @@ class Stack():
         self.bottom: Optional[Node] = None
         self.size = 0
 
-    def push(self, value: int):
+    def push(self, value: Union[int, str]):
         node = Node(value)
         if self.top is None:
             self.top = node
@@ -44,7 +44,7 @@ class Stack():
         return ' -> '.join(nodes) + " -> None"
 
 stack = Stack()
-stack.push(1)
-stack.push(2)
-stack.push(3)
+stack.push("google")
+stack.push("youtube")
+stack.push("chatgpt")
 print(stack)
