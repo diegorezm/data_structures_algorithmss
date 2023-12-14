@@ -81,7 +81,7 @@ class LinkedList:
             current = current.next
             i += 1
         return None
-    # 1 -> 2 -> 3
+    # This returns an array, but it should return a linked list
     def reverse(self) -> List[int]:
         current = self.head
         reversed_list = []
@@ -89,6 +89,16 @@ class LinkedList:
             reversed_list.append(current.value)
             current = current.next
         return reversed_list[::-1]
+    # This is the real way to do this:
+    # def reversed(self) -> Optional[Node]:
+    # prev, curr = None, self.head
+    # while curr:
+    #   aux = curr.next
+    #   curr.next = prev
+    #   prev = curr
+    #   curr= aux
+    # return prev
+
 
     def __repr__(self, values: Union[List[int], None] = None):
         nodes = []
