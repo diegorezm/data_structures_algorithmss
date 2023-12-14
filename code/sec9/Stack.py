@@ -1,6 +1,5 @@
 from typing import Optional, Union
 
-
 class Node():
     def __init__(self, value: Union[int, str]):
         self.value = value
@@ -32,19 +31,55 @@ class Stack():
             num = self.top.value
             prev = self.top.next
             self.top = prev
+            self.size -= 1
             return num
         return None
 
     def __repr__(self):
+        if self.top is None:
+            return f"size: {self.size}"
         nodes = []
         current = self.top
         while current:
             nodes.append(str(current.value))
             current = current.next
-        return ' -> '.join(nodes) + " -> None"
+        return ' -> '.join(nodes) + " -> None \nsize: " + f"{self.size}"
+
+class StackArray():
+    def __init__(self):
+        self.data = []
+        self.length = 0
+    def push(self, val):
+        self.length += 1
+        return self.data.append(val)
+    def peek(self):
+        if self.length < 1:
+            return None
+        return self.data[self.length - 1]
+    def pop(self):
+        if self.length < 1:
+            return None
+        self.length -= 1
+        return self.data.pop()
+    def __repr__(self) -> str:
+        nodes = self.data[::-1]
+        if self.length == 0:
+            return 'None \nsize: 0'
+        return ' -> '.join(map(str, nodes)) + " -> None \nsize: " + str(self.length)
 
 stack = Stack()
 stack.push("google")
 stack.push("youtube")
 stack.push("chatgpt")
+stack.pop()
+stack.pop()
 print(stack)
+
+stackArray = StackArray()
+stackArray.push("google")
+stackArray.push("chatgpt")
+stackArray.push("youtube")
+stackArray.push("twitter")
+print(stackArray)
+
+
