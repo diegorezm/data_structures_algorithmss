@@ -51,7 +51,7 @@ class StackArray():
         self.length = 0
     def push(self, val):
         self.length += 1
-        return self.data.append(val)
+        return self.data.insert(0,val)
     def peek(self):
         if self.length < 1:
             return None
@@ -61,11 +61,11 @@ class StackArray():
             return None
         self.length -= 1
         return self.data.pop()
+
     def __repr__(self) -> str:
-        nodes = self.data[::-1]
         if self.length == 0:
             return 'None \nsize: 0'
-        return ' -> '.join(map(str, nodes)) + " -> None \nsize: " + str(self.length)
+        return ' -> '.join(map(str, self.data)) + " -> None \nsize: " + str(self.length)
 
 stack = Stack()
 stack.push("google")
