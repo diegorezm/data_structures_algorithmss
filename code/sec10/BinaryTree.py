@@ -94,6 +94,12 @@ class BinaryTree():
         # Value not found
         return
 
+    def preorder_treversal(self, node: Optional[Node]):
+        if node:
+            print(node.value,end="")
+            self.preorder_treversal(node.right)
+            self.preorder_treversal(node.left)
+
     def tree_to_dict(self, node):
         if node is None:
             return None
@@ -114,8 +120,8 @@ class BinaryTree():
 
 
 tree = BinaryTree()
-tree.insert(20)
 tree.insert(10)
 tree.insert(20)
 tree.insert(30)
 print(tree)
+print(tree.preorder_treversal(tree.root))
