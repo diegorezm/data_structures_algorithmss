@@ -14,5 +14,3 @@ def fibonacci(n: int):
 
 print(fibonacciIter(6))
 print(fibonacci(6))
-
-
