@@ -83,15 +83,14 @@ class BinaryTree():
                         successor_parent.left = successor.right
                     else:
                         successor_parent.right = successor.right
-
                 return  # Node removed, exit loop
+
             elif value < current.value:
                 parent = current
                 current = current.left
             else:
                 parent = current
                 current = current.right
-
         # Value not found
         return
 
