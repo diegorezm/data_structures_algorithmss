@@ -26,7 +26,7 @@ def insertion_sort(arr: list[int]) -> list[int]:
         arr[j+1] = key
     return arr
 
-def merge_sort(arr: list[int]):
+def merge_sort(arr: list[int]) -> list[int]:
     if len(arr) == 1:
         return arr
     m = len(arr) // 2
@@ -36,7 +36,7 @@ def merge_sort(arr: list[int]):
     right = merge_sort(right)
     return merge(left, right)
 
-def merge(left: list[int], right:list[int]):
+def merge(left: list[int], right:list[int]) -> list[int]:
     sorted_arr = []
     i ,j = 0, 0
     while i < len(left) and j < len(right):
