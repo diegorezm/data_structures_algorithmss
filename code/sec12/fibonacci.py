@@ -1,3 +1,4 @@
+from time import time
 def fibonacciIter(n: int) -> int:
     prev, curr = 0, 1
     while n > 0:
@@ -7,10 +8,33 @@ def fibonacciIter(n: int) -> int:
         n -= 1
     return prev
 
-def fibonacci(n: int):
+
+def fibonacci(n: int, cache: dict):
+    if n in cache:
+        return cache[n]
     if n < 2:
         return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    else:
+        cache[n] = fibonacci(n - 1, cache) + fibonacci(n - 2, cache)
+        return cache[n]
 
-print(fibonacciIter(6))
-print(fibonacci(6))
+def noCacheRecursive(n: int):
+    if n < 2:
+        return n
+    return noCacheRecursive(n - 1) + noCacheRecursive(n - 2)
+
+
+start = time()
+fibonacciIter(100)
+end = time()
+print(f"iter: {end - start}")
+
+start = time()
+fibonacci(50 , {})
+end = time()
+print(f"recursive with cache: {end - start}")
+
+start = time()
+noCacheRecursive(30)
+end = time()
+print(f"nocache: {end - start}")
