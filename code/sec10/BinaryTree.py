@@ -44,6 +44,7 @@ class BinaryTree():
         else:
             return None
 
+    # i have no idea how this works
     def remove(self, value):
         parent = None
         current = self.root
@@ -94,11 +95,66 @@ class BinaryTree():
         # Value not found
         return
 
-    def preorder_treversal(self, node: Optional[Node]):
+    def bfs(self) -> list[int]:
+        if self.root is not None:
+            curr = self.root
+            tree = []
+            queue = [curr]
+            while len(queue) > 0:
+                curr  = queue.pop(0)
+                tree.append(curr.value)
+                if curr.left is not None:
+                    queue.append(curr.left)
+                if curr.right is not None:
+                    queue.append(curr.right)
+            return tree
+        else:
+            return []
+
+    def bfsR(self, queue: list[Node], arr: list[int]) -> list[int]:
+        if len(queue) == 0:
+            return arr
+        curr = queue.pop(0)
+        arr.append(curr.value)
+        if curr.left is not None:
+            queue.append(curr.left)
+        if curr.right is not None:
+            queue.append(curr.right)
+        return self.bfsR(queue,arr)
+
+    def dfsInorder(self):
+        return self.inorder_traversal(self.root, [])
+
+    def dfsPreorder(self):
+        return self.preorder_treversal(self.root, [])
+
+    def dfsPostorder(self):
+        return self.postorder_treversal(self.root, [])
+
+    def preorder_treversal(self, node: Optional[Node], arr: list[int]) -> list[int]:
         if node:
-            print(node.value,end="")
-            self.preorder_treversal(node.right)
-            self.preorder_treversal(node.left)
+            arr.append(node.value) 
+            self.preorder_treversal(node.left, arr)
+            self.preorder_treversal(node.right,arr)
+        return arr
+
+    def postorder_treversal(self, node: Optional[Node], arr:list[int]) -> list[int]:
+        if node:
+            if node.left:
+                self.postorder_treversal(node.left, arr)
+            if node.right:
+                self.postorder_treversal(node.right, arr)
+            arr.append(node.value)
+        return arr
+
+    def inorder_traversal(self,node: Optional[Node], arr: list[int]) -> list[int]:
+        if node:
+            if node.left:
+                self.inorder_traversal(node.left, arr)
+            arr.append(node.value)
+            if node.right:
+                self.inorder_traversal(node.right, arr)
+        return arr
 
     def tree_to_dict(self, node):
         if node is None:
@@ -120,8 +176,14 @@ class BinaryTree():
 
 
 tree = BinaryTree()
-tree.insert(10)
-tree.insert(20)
-tree.insert(30)
-print(tree)
-print(tree.preorder_treversal(tree.root))
+tree.insert(9);
+tree.insert(4);
+tree.insert(6);
+tree.insert(20);
+tree.insert(170);
+tree.insert(15);
+tree.insert(1);
+if tree.root is not None:
+    print("POSTORDER:       ", tree.dfsPostorder())
+    print("PREORDER:        ", tree.dfsPreorder())
+    print("INORDER:         ", tree.dfsInorder())
