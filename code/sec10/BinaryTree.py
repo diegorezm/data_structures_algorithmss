@@ -173,8 +173,6 @@ class BinaryTree():
         tree_dict = self.tree_to_dict(self.root)
         return f"BinaryTree: {tree_dict}"
 
-
-
 tree = BinaryTree()
 tree.insert(9);
 tree.insert(4);

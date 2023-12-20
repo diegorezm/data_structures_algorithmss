@@ -1,5 +1,4 @@
 class Graph():
-
     def __init__(self) -> None:
         self.size = 0
         self.list = {}
