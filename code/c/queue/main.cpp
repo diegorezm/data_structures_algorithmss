@@ -22,7 +22,11 @@ public:
     }
     int temp = this->queue[this->first];
     this->queue[this->first] = 0;
-    this->first++;
+    if (this->first > size) {
+      this->first = 0;
+    } else {
+      this->first++;
+    }
     return temp;
   }
 
