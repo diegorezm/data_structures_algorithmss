@@ -48,6 +48,7 @@ public:
     for (int i = 0; i < this->size; i++) {
       if (this->queue[i] == n) {
         idx = i;
+        break;
       }
     }
     return idx;
@@ -86,7 +87,7 @@ int main(int argc, char *argv[]) {
     }
   }
   for (int i = 0; i < n_people; i++) {
-    if (i != 0 && q.index(i) < 0){
+    if (i != 0 && q.index(i) < 0) {
       q.push(i);
     }
   }
