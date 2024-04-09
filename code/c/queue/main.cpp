@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 class Queue {
 public:
@@ -35,11 +36,21 @@ public:
     return temp;
   }
 
-  int peek() { 
-    if(this->isEmpty()){
+  int peek() {
+    if (this->isEmpty()) {
       return -1;
     }
-    return this->queue[this->first]; 
+    return this->queue[this->first];
+  }
+
+  int index(int n) {
+    int idx = -1;
+    for (int i = 0; i < this->size; i++) {
+      if (this->queue[i] == n) {
+        idx = i;
+      }
+    }
+    return idx;
   }
 
   bool isEmpty() { return this->last == 0 && this->first == 0; }
@@ -66,17 +77,19 @@ private:
 };
 
 int main(int argc, char *argv[]) {
-  Queue q(5);
-  q.push(10);
-  q.push(20);
-  q.push(30);
-  q.push(40);
-  q.push(50);
-  int p = q.pop();
-  q.push(10);
-  p = q.pop();
-  std::cout << "\n" << p;
-  q.push(20);
+  size_t n = 2;
+  int n_people = 13;
+  Queue q(n_people);
+  for (int i = 0; i < n_people; i += n) {
+    if (i > 0) {
+      q.push(i);
+    }
+  }
+  for (int i = 0; i < n_people; i++) {
+    if (i != 0 && q.index(i) < 0){
+      q.push(i);
+    }
+  }
   q.display();
   return 0;
 }
