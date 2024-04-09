@@ -9,12 +9,15 @@ public:
   }
 
   ~Queue() { delete[] this->queue; }
-  void push(int n) {
+  int push(int n) {
+    int temp = -1;
     if (this->last == this->size) {
       this->last = 0;
+      temp = this->queue[0];
     }
     this->queue[this->last] = n;
     this->last++;
+    return temp;
   }
   int pop() {
     if (isEmpty()) {
