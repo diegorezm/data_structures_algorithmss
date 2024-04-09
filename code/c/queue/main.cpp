@@ -9,6 +9,7 @@ public:
   }
 
   ~Queue() { delete[] this->queue; }
+
   int push(int n) {
     int temp = -1;
     if (this->last == this->size) {
@@ -19,8 +20,9 @@ public:
     this->last++;
     return temp;
   }
+
   int pop() {
-    if (isEmpty()) {
+    if (this->isEmpty()) {
       return -1;
     }
     int temp = this->queue[this->first];
@@ -33,13 +35,20 @@ public:
     return temp;
   }
 
+  int peek() {
+    return this->queue[this->first];
+  }
+
   bool isEmpty() { return this->last == this->first; }
 
   bool isFull() { return this->last == this->size; }
 
   void display() {
     for (int i = 0; i < this->size; i++) {
-      std::cout << this->queue[i] << " ";
+      std::cout << this->queue[i];
+      if (i != this->size - 1) {
+        std::cout << "->";
+      }
     }
     std::cout << std::endl;
   }
@@ -58,5 +67,10 @@ int main(int argc, char *argv[]) {
   q.push(30);
   q.push(40);
   q.push(50);
+  q.display();
+  int p = q.pop();
+  q.push(10);
+  q.display();
+  std::cout << "\n" << q.peek();
   return 0;
 }
