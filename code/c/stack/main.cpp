@@ -27,20 +27,23 @@ public:
   }
 
   T pop() {
+    if (this->isEmpty()) {
+      return -1;
+    }
     int temp = this->stack[this->top];
     this->stack[this->top] = 0;
     this->top--;
     return temp;
   }
 
-  T peek() { 
-    if(this->isEmpty()){
+  T peek() {
+    if (this->isEmpty()) {
       return -1;
     }
-    return this->stack[this->top]; 
+    return this->stack[this->top];
   }
 
-  bool isEmpty() { return this->top == -1; }
+  bool isEmpty() { return this->top < 0; }
 
   bool isFull() { return this->top == this->size - 1; }
 
@@ -61,13 +64,12 @@ public:
 int main(int argc, char *argv[]) {
   std::string str = "((4 + 5) - 20";
   size_t str_len = str.length();
-  const char* c_char = str.c_str();
+  const char *c_char = str.c_str();
   Stack<char> stack(str_len);
-  for(int i = 0; i < str_len; i ++){
-    if(c_char[i] == '('){
+  for (int i = 0; i < str_len; i++) {
+    if (c_char[i] == '(') {
       stack.push('(');
-    }
-    else if(c_char[i] == ')'){
+    } else if (c_char[i] == ')') {
       stack.pop();
     }
   }
