@@ -35,15 +35,20 @@ public:
     return temp;
   }
 
-  int peek() {
-    return this->queue[this->first];
+  int peek() { 
+    if(this->isEmpty()){
+      return -1;
+    }
+    return this->queue[this->first]; 
   }
 
-  bool isEmpty() { return this->last == this->first; }
+  bool isEmpty() { return this->last == 0 && this->first == 0; }
 
   bool isFull() { return this->last == this->size; }
 
   void display() {
+    std::cout << "First: " << this->first << std::endl;
+    std::cout << "Last: " << this->last << std::endl;
     for (int i = 0; i < this->size; i++) {
       std::cout << this->queue[i];
       if (i != this->size - 1) {
@@ -67,10 +72,11 @@ int main(int argc, char *argv[]) {
   q.push(30);
   q.push(40);
   q.push(50);
-  q.display();
   int p = q.pop();
   q.push(10);
+  p = q.pop();
+  std::cout << "\n" << p;
+  q.push(20);
   q.display();
-  std::cout << "\n" << q.peek();
   return 0;
 }
