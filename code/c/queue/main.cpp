@@ -80,7 +80,7 @@ private:
 int main(int argc, char *argv[]) {
   size_t n = 2;
   int n_people = 13;
-  Queue q(n_people);
+  Queue q(n_people - 1);
   for (int i = 0; i < n_people; i += n) {
     if (i > 0) {
       q.push(i);
