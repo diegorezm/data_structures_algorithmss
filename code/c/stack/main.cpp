@@ -61,8 +61,7 @@ public:
   ~Stack() { delete[] this->stack; };
 };
 
-int main(int argc, char *argv[]) {
-  std::string str = "((4 + 5) - 20";
+int validParentheses(std::string str) {
   size_t str_len = str.length();
   const char *c_char = str.c_str();
   Stack<char> stack(str_len);
@@ -70,9 +69,18 @@ int main(int argc, char *argv[]) {
     if (c_char[i] == '(') {
       stack.push('(');
     } else if (c_char[i] == ')') {
+      if (stack.isEmpty()) {
+        return 0;
+      }
       stack.pop();
     }
   }
-  std::cout << (stack.isEmpty() ? "Valid" : "Invalid");
+  return stack.isEmpty() ? 1 : 0;
+}
+
+int main(int argc, char *argv[]) {
+  std::string str = "((4 + 5) - 20)";
+  int valid = validParentheses(str);
+  std::cout << (valid > 0 ? "Valid" : "Invalid");
   return 0;
 }
