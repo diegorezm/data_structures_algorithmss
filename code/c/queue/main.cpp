@@ -77,9 +77,7 @@ private:
   int last;
 };
 
-int main(int argc, char *argv[]) {
-  size_t n = 2;
-  int n_people = 13;
+void josephus(int n, int n_people) {
   Queue q(n_people - 1);
   for (int i = 0; i < n_people; i += n) {
     if (i > 0) {
@@ -92,5 +90,9 @@ int main(int argc, char *argv[]) {
     }
   }
   q.display();
-  return 0;
+}
+
+int main(int argc, char *argv[]) { 
+  josephus(2, 13);
+  return 0; 
 }
