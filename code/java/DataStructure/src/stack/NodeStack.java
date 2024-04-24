@@ -1,9 +1,9 @@
 package stack;
 
 import base.Node;
-import interfaces.CustomList;
+import interfaces.CustomNodeList;
 
-public class NodeStack<T> implements CustomList<T> {
+public class NodeStack<T> implements CustomNodeList<T> {
     private int size;
     private Node<T> bottom;
     private Node<T> top;
@@ -75,7 +75,8 @@ public class NodeStack<T> implements CustomList<T> {
         return -1;
     }
 
-    private Node<T> getNode(Integer index) {
+    @Override
+    public Node<T> getNode(Integer index) {
         if (index > this.size || index < 0) throw new IndexOutOfBoundsException();
         int idx = 0;
         var curr = this.bottom;

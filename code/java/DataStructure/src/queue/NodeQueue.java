@@ -1,9 +1,9 @@
 package queue;
 
-import interfaces.CustomList;
 import base.Node;
+import interfaces.CustomNodeList;
 
-public class NodeQueue<T> implements CustomList<T> {
+public class NodeQueue<T> implements CustomNodeList<T> {
     protected Node<T> first, last;
     protected int size;
 
@@ -75,8 +75,8 @@ public class NodeQueue<T> implements CustomList<T> {
         }
         return -1;
     }
-
-    private Node<T> getNode(Integer index) {
+    @Override
+    public Node<T> getNode(Integer index) {
         if (index > this.size || index < 0) throw new IndexOutOfBoundsException();
         var curr = this.first;
         int idx = 0;
