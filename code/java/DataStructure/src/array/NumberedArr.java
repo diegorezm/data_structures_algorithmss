@@ -11,9 +11,9 @@ public class NumberedArr<N extends Number> extends Arr<N> {
 
     public N largest() {
         var largest = this.arr[0].doubleValue();
-        for (int i = 0; i < this.arr.length; i++) {
-            if (largest < this.arr[i].doubleValue()) {
-                largest = this.arr[i].doubleValue();
+        for (N n : this.arr) {
+            if (largest < n.doubleValue()) {
+                largest = n.doubleValue();
             }
         }
         return (N) (Number) largest;
@@ -21,9 +21,9 @@ public class NumberedArr<N extends Number> extends Arr<N> {
 
     public N smallest() {
         var smallest = this.arr[0].doubleValue();
-        for (int i = 0; i < this.arr.length; i++) {
-            if (smallest > this.arr[i].doubleValue()) {
-                smallest = this.arr[i].doubleValue();
+        for (N n : this.arr) {
+            if (smallest > n.doubleValue()) {
+                smallest = n.doubleValue();
             }
         }
         return (N) (Number) smallest;
