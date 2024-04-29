@@ -16,8 +16,8 @@ public class Arr<T> implements CustomList<T> {
 
     private void shift(int index) {
         if (index > this.curr) return;
-        for (int i = index; i < this.curr - 1; i++) {
-            this.arr[i] = this.arr[i + 1];
+        for (int i = this.curr - 1; i >= index; i--) {
+            this.arr[i + 1] = this.arr[i];
         }
     }
 
