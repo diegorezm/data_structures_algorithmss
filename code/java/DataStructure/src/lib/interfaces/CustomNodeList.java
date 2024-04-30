@@ -1,6 +1,6 @@
-package interfaces;
+package lib.interfaces;
 
-import base.Node;
+import lib.base.Node;
 
 public interface CustomNodeList<T> extends CustomList<T> {
     Node<T> getNode(Integer index);

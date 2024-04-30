@@ -1,4 +1,4 @@
-package queue;
+package lib.queue;
 
 public class NodeNumberedQ<T extends Number> extends NodeQueue<T> {
     public T sum() {

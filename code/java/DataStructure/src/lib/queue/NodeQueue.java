@@ -1,7 +1,7 @@
-package queue;
+package lib.queue;
 
-import base.Node;
-import interfaces.CustomNodeList;
+import lib.base.Node;
+import lib.interfaces.CustomNodeList;
 
 public class NodeQueue<T> implements CustomNodeList<T> {
     protected Node<T> first, last;
@@ -14,7 +14,7 @@ public class NodeQueue<T> implements CustomNodeList<T> {
     }
 
     @Override
-    public void append(T value) {
+    public void push(T value) {
         if (this.first == null) {
             this.first = new Node<>(value);
             this.last = first;
@@ -23,42 +23,6 @@ public class NodeQueue<T> implements CustomNodeList<T> {
             this.last = this.last.getNext();
         }
         this.size++;
-    }
-
-    @Override
-    public void prepend(T value) {
-        if (this.first == null) {
-            this.first = new Node<>(value);
-            this.last = first;
-        } else {
-            Node<T> aux = new Node<>(value);
-            aux.setNext(this.first);
-            this.first = aux;
-        }
-        this.size++;
-    }
-
-    @Override
-    public void insert(int index, T value) {
-        if (index == this.size) {
-            this.append(value);
-            return;
-        }
-        if (index == 0) {
-            this.prepend(value);
-            return;
-        }
-        if (this.first == null) {
-            this.first = new Node<>(value);
-            this.last = first;
-        } else {
-            var node = new Node<>(value);
-            var parent = this.getNode(index - 1);
-            var child = parent.getNext();
-            node.setNext(child);
-            parent.setNext(node);
-            this.size++;
-        }
     }
 
     @Override
@@ -75,6 +39,7 @@ public class NodeQueue<T> implements CustomNodeList<T> {
         }
         return -1;
     }
+
     @Override
     public Node<T> getNode(Integer index) {
         if (index > this.size || index < 0) throw new IndexOutOfBoundsException();
@@ -107,26 +72,18 @@ public class NodeQueue<T> implements CustomNodeList<T> {
 
     @Override
     public T pop() {
-        if (this.size <= 0) {
+        if (this.isEmpty() || this.first == null) {
             return null;
         }
-        if (this.size == 1) {
-            var aux = this.first.getValue();
-            this.first = null;
-            this.last = null;
-            return aux;
-        }
-        if (this.first != null) {
-            var aux = this.first.getValue();
-            this.first = this.first.getNext();
-            this.size--;
-            return aux;
-        }
-        return null;
+        var aux = this.first;
+        this.first = this.first.getNext();
+        this.size--;
+        return aux.getValue();
     }
 
+
     @Override
-    public T peek() {
+    public T peak() {
         return this.first.getValue();
     }
 
@@ -143,5 +100,22 @@ public class NodeQueue<T> implements CustomNodeList<T> {
             System.out.print(curr.getValue() + " -> ");
             curr = curr.getNext();
         }
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    @Override
+    public String toString() {
+        if (this.isEmpty()) return "";
+        StringBuilder stringBuilder = new StringBuilder();
+        var curr = this.first;
+        while (curr != null) {
+            stringBuilder.append(curr.getValue());
+            curr = curr.getNext();
+        }
+        return stringBuilder.toString();
     }
 }

@@ -1,7 +1,6 @@
-package array;
+package lib.array;
 
-import base.Node;
-import interfaces.CustomList;
+import lib.interfaces.CustomList;
 
 public class Arr<T> implements CustomList<T> {
     private final int size = 256;
@@ -22,7 +21,7 @@ public class Arr<T> implements CustomList<T> {
     }
 
     @Override
-    public void append(T value) {
+    public void push(T value) {
         if (curr == size) {
             return;
         }
@@ -30,14 +29,12 @@ public class Arr<T> implements CustomList<T> {
         curr++;
     }
 
-    @Override
     public void prepend(T value) {
         this.shift();
         this.arr[0] = value;
         this.curr++;
     }
 
-    @Override
     public void insert(int index, T value) {
         this.shift(index);
         this.arr[index] = value;
@@ -69,7 +66,7 @@ public class Arr<T> implements CustomList<T> {
     }
 
     @Override
-    public T peek() {
+    public T peak() {
         return this.arr[curr];
     }
 
@@ -85,5 +82,10 @@ public class Arr<T> implements CustomList<T> {
             System.out.print(t + " -> ");
         }
         this.shift();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.curr == 0;
     }
 }

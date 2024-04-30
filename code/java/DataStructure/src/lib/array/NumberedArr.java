@@ -1,4 +1,4 @@
-package array;
+package lib.array;
 
 public class NumberedArr<N extends Number> extends Arr<N> {
     public N sum() {
