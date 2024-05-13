@@ -190,3 +190,14 @@ def __insertion_sort(arr: list[int], n: int):
     # Insere last_el na posição correta
     arr[i + 1] = last_el
 ```
+# Ex21
+````python
+def max_value(arr: list[int]):
+    if len(arr) == 1:
+        return arr[0]
+    first_el = arr[0]
+    if first_el > max_value(arr[1:]):
+        return first_el
+    else:
+        return max_value(arr[1:])
+``````
