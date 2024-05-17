@@ -80,7 +80,10 @@ def ex15(n: int):
 def ex16(n: int):
     if n == 1:
         return 1
-    return n - ex16(n - 1)
+    if n % 2 == 0 :
+        return -1/n + ex16(n - 1)
+    else:
+        return 1/n + ex16(n - 1)
 
 def insertion_sort(arr: list[int]):
     return __insertion_sort(arr, len(arr))
@@ -109,5 +112,4 @@ def max_value(arr: list[int]):
     else:
         return max_value(arr[1:])
 
-n = [5,3,2,9,1, 22]
-print(max_value(n))
+print(ex16(3))
