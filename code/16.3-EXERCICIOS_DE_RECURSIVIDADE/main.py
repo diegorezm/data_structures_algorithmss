@@ -1,3 +1,7 @@
+def misterio(a: int, b: int):
+    if b == 0:
+        return a
+    return a + misterio(a, b - 1)
 def potencia(n: int, e: int):
     if e == 0:
         return 1
@@ -111,5 +115,4 @@ def max_value(arr: list[int]):
         return first_el
     else:
         return max_value(arr[1:])
-
-print(ex16(3))
+print(misterio(2,1))

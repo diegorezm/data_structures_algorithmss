@@ -1,5 +1,5 @@
 # Ex1
-- Soma o valor de "a" com o valor de "b" até que "b" se torne 1, então retorna o valor final de "a"
+- Soma o valor de "a" consigo mesma até que a variavel "b" se torne 0
 
 # Ex2
 - Este código gera um loop infinito pois a variavel "n" não muda quando passada como parametro. Para concertar:
