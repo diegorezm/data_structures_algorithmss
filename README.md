@@ -1,3 +1,3 @@
 # Data Structures + Algorithms notes
 
-These are the notes I'm taking while going through Andrei Neagoie's [Data Structures and Algorithms course](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms/).
+This repository is a collection of various resources, code samples, and exercises that i'm using to study.
