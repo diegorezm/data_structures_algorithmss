@@ -184,11 +184,12 @@ def __insertion_sort(arr: list[int], n: int):
     # tudo depois do ultimo elemento
     i = n - 2
     # Move todos os elemtos que são maiores que last_el para frente
-    while i > 0 and arr[i] > last_el:
+    while i >= 0 and arr[i] > last_el:
         arr[i + 1] = arr[i]
         i -= 1
     # Insere last_el na posição correta
     arr[i + 1] = last_el
+    return arr
 ```
 # Ex21
 ````python
