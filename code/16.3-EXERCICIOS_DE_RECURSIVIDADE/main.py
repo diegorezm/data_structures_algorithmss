@@ -45,7 +45,7 @@ def soma_impares(n: int):
         return n
     if n % 2 > 0:
         return n + soma_impares(n - 1)
-    return n - 1
+    return soma_impares(n - 1)
 
 
 def mod(n: int, m: int):
@@ -106,7 +106,7 @@ def puzzle(base: int, limit: int):
 def ex15(n: int):
     if n == 1:
         return 1
-    return n + ex15(n - 1)
+    return 1 / n + ex15(n - 1)
 
 
 def ex16(n: int):
@@ -146,4 +146,5 @@ def max_value(arr: list[int]):
     return max_value(arr[1:])
 
 
-print(misterio(2, 2))
+# 1 + 3 + 5
+print(soma_impares(5))
