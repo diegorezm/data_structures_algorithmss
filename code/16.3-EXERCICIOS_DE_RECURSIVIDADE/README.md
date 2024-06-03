@@ -203,25 +203,53 @@ def ex16(n: int):
 
 # Ex18
 
-```python
-def insertion_sort(arr: list[int]):
-    return __insertion_sort(arr, len(arr))
+- python
 
-def __insertion_sort(arr: list[int], n: int):
-    if n < 1:
-        return
-    __insertion_sort(arr, n - 1)
-    last_el = arr[n - 1]
-    # tudo depois do ultimo elemento
-    i = n - 2
-    # Move todos os elemtos que são maiores que last_el para frente
-    while i >= 0 and arr[i] > last_el:
-        arr[i + 1] = arr[i]
-        i -= 1
-    # Insere last_el na posição correta
-    arr[i + 1] = last_el
-    return arr
-```
+  ```python
+  def insertion_sort(arr: list[int]):
+      return __insertion_sort(arr, len(arr))
+
+  def __insertion_sort(arr: list[int], n: int):
+      if n < 1:
+          return
+      __insertion_sort(arr, n - 1)
+      last_el = arr[n - 1]
+      # tudo depois do ultimo elemento
+      i = n - 2
+      # Move todos os elemtos que são maiores que last_el para frente
+      while i >= 0 and arr[i] > last_el:
+          arr[i + 1] = arr[i]
+          i -= 1
+      # Insere last_el na posição correta
+      arr[i + 1] = last_el
+      return arr
+  ```
+
+- java
+
+  ```java
+    public static void sort(int[] arr) {
+      insertionSort(arr, arr.length);
+    }
+
+    private static void insertionSort(int[] arr, int n) {
+      if (n <= 1) {
+        return;
+      }
+      insertionSort(arr, n - 1);
+      int lastElement = arr[n - 1];
+      int i = n - 2;
+
+      // Move elements greater than lastElement one position ahead
+      while (i >= 0 && arr[i] > lastElement) {
+        arr[i + 1] = arr[i];
+        i--;
+      }
+
+      // Insert lastElement in its correct position
+      arr[i + 1] = lastElement;
+    }
+  ```
 
 # Ex21
 
