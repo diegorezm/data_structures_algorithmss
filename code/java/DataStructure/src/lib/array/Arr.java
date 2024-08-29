@@ -14,7 +14,8 @@ public class Arr<T> implements CustomList<T> {
     }
 
     private void shift(int index) {
-        if (index > this.curr) return;
+        if (index > this.curr)
+            return;
         for (int i = this.curr - 1; i >= index; i--) {
             this.arr[i + 1] = this.arr[i];
         }
@@ -53,7 +54,8 @@ public class Arr<T> implements CustomList<T> {
 
     @Override
     public T get(Integer index) {
-        if (index > this.curr) return null;
+        if (index > this.curr)
+            return null;
         return this.arr[index];
     }
 
@@ -78,7 +80,8 @@ public class Arr<T> implements CustomList<T> {
     @Override
     public void show() {
         for (T t : this.arr) {
-            if (t == null) return;
+            if (t == null)
+                return;
             System.out.print(t + " -> ");
         }
         this.shift();

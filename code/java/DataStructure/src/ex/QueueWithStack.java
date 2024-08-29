@@ -1,5 +1,3 @@
-package exercicios.ex2;
-
 import lib.stack.NodeStack;
 
 public class QueueWithStack {
@@ -33,7 +31,8 @@ public class QueueWithStack {
     }
 
     public int pop() {
-        if(this.isEmpty()) return -99999;
+        if (this.isEmpty())
+            return -99999;
         this.size--;
         return this.numbers.pop();
     }
@@ -45,7 +44,8 @@ public class QueueWithStack {
     public boolean isEmpty() {
         return this.size == 0;
     }
-    public void show(){
+
+    public void show() {
         this.numbers.show();
     }
 }

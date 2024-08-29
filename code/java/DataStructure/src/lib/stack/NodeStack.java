@@ -38,7 +38,8 @@ public class NodeStack<T> implements CustomNodeList<T> {
 
     @Override
     public Node<T> getNode(Integer index) {
-        if (index > this.size || index < 0) throw new IndexOutOfBoundsException();
+        if (index > this.size || index < 0)
+            throw new IndexOutOfBoundsException();
         int idx = 0;
         var curr = this.top;
         while (curr != null) {
@@ -53,7 +54,8 @@ public class NodeStack<T> implements CustomNodeList<T> {
 
     @Override
     public T get(Integer index) {
-        if (index > this.size || index < 0) throw new IndexOutOfBoundsException();
+        if (index > this.size || index < 0)
+            throw new IndexOutOfBoundsException();
         int idx = 0;
         var curr = this.top;
         while (curr != null) {
@@ -94,7 +96,8 @@ public class NodeStack<T> implements CustomNodeList<T> {
 
     @Override
     public void show() {
-        if (this.top == null) return;
+        if (this.top == null)
+            return;
         var curr = this.top;
         while (curr != null) {
             System.out.print(curr.getValue() + " -> ");
@@ -104,7 +107,8 @@ public class NodeStack<T> implements CustomNodeList<T> {
 
     @Override
     public String toString() {
-        if (this.isEmpty()) return "";
+        if (this.isEmpty())
+            return "";
         StringBuilder stringBuilder = new StringBuilder();
         var curr = this.top;
         while (curr != null) {
