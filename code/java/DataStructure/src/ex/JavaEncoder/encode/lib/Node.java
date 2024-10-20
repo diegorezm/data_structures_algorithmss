@@ -1,30 +1,26 @@
-package lib;
+package encode.lib;
 
 public class Node implements Comparable<Node> {
     private Node left;
     private Node right;
     private int frequency;
 
-    // Default constructor
     public Node() {
         this.frequency = 0;
         this.left = null;
         this.right = null;
     }
 
-    // Constructor for internal nodes (non-leaf nodes)
     public Node(int frequency) {
         this.frequency = frequency;
     }
 
-    // Constructor for internal nodes with left and right children
     public Node(Node left, Node right) {
         this.frequency = left.getFrequency() + right.getFrequency();
         this.left = left;
         this.right = right;
     }
 
-    // Getters and setters
     public Node getLeft() {
         return left;
     }
@@ -55,8 +51,4 @@ public class Node implements Comparable<Node> {
         return Integer.compare(this.frequency, other.frequency);
     }
 
-    @Override
-    public String toString() {
-        return "Node{frequency=" + frequency + '}';
-    }
 }

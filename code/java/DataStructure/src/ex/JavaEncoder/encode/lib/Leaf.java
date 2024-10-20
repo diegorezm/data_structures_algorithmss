@@ -1,4 +1,4 @@
-package lib;
+package encode.lib;
 
 public class Leaf extends Node {
     private char c;
@@ -20,10 +20,4 @@ public class Leaf extends Node {
     public char getC() {
         return c;
     }
-
-    @Override
-    public String toString() {
-        return "Leaf{character=" + c + ", frequency=" + getFrequency() + "}";
-    }
-
 }

@@ -1,37 +1,36 @@
-package utils;
+package encode.utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Reader {
+public class EncodeReader {
     private String content;
 
-    public Reader(String path) {
+    public EncodeReader(String path) {
         this.read(path);
     }
 
-    public String read(String path) {
+    public void read(String path) {
         StringBuilder contentBuilder = new StringBuilder();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (contentBuilder.length() > 0) {
-                    contentBuilder.append(' ');
+                if (!contentBuilder.isEmpty()) {
+                    contentBuilder.append(System.lineSeparator());
                 }
                 contentBuilder.append(line);
             }
+            content = contentBuilder.toString();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
             System.out.println("ERRO: Arquivo não encontrado.");
-            return null;
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("ERRO: " + e.getMessage());
-            return null;
         }
-        content = contentBuilder.toString();
-        return content;
     }
 
     public char[] toCharArray() {
