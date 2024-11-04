@@ -1,4 +1,4 @@
-package lib.RedBlackTree;
+package RedBlackTree;
 
 public class RedBlackNode {
   private int value;
